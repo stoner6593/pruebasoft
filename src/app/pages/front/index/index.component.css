@@ -1,0 +1,16 @@
+.carousel-inner>.item> a > img, 
+.carousel-inner>.item> img, 
+.img-responsive, 
+.thumbnail a> img, 
+.thumbnail > img {
+	width: 100%;
+	height: 180px !important;
+	text-align: center;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+.product-imitation {
+	padding:  0px;
+}

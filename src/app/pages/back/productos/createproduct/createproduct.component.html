@@ -1,0 +1,87 @@
+<form (ngSubmit)="onCrearProducto(formNew)" #formNew="ngForm"  >
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Nombre</small><br>
+			<div class="input-group">
+				<input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="producto.nombre" #nombre="ngModel">
+			</div>
+		</div>	
+		<div class="col-md-6 form-group">
+			<small>Marca</small><br>		
+			<div class="input-group">
+				<input type="text" class="form-control" name="marca" id="marca" [(ngModel)]="producto.marca" #marca="ngModel">
+			</div>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Categoria</small><br>
+			<div class="input-group">
+				<select class="form-control" name="categoria" id="categoria" [(ngModel)]="producto.categoria" #categoria="ngModel">
+					<option value="">---</option>
+					<option *ngFor="let c of categorias" value="{{ c.nombre }}">{{ c.nombre }}</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6 form-group">
+			<small>Presentación</small><br>
+			<div class="input-group">
+				<input type="text" class="form-control" name="presentacion" id="presentacion" [(ngModel)]="producto.presentacion" #presentacion="ngModel">
+			</div>		
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Descripción</small><br>
+			<div class="input-group">
+				<input type="text" class="form-control" name="descripcion" id="descripcion" [(ngModel)]="producto.descripcion" #descripcion="ngModel">
+			</div>
+		</div>
+		<div class="col-md-6 form-group">
+			<small>Stock</small><br>
+			<div class="input-group">
+				<input type="number" class="form-control" name="stock" id="stock" [(ngModel)]="producto.stock" #stock="ngModel">
+			</div>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Vencimiento</small><br>
+			<div class="input-group">
+				<input type="date" class="form-control" name="fvencimiento" id="fvencimiento"  [(ngModel)]="producto.fvencimiento" #fvencimiento="ngModel">
+			</div>
+		</div>
+		<div class="col-md-6 form-group">
+			<small>Registro Invima</small><br>
+			<div class="input-group">
+				<input type="text" class="form-control" name="reginvima" id="reginvima" [(ngModel)]="producto.reginvima" #reginvima="ngModel">
+			</div>	
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Iva</small><br>
+			<div class="input-group">
+				<input type="numer" class="form-control" name="iva" id="iva" [(ngModel)]="producto.iva" #iva="ngModel">
+			</div>
+		</div>
+		<div class="col-md-6 form-group">
+			<small>Valor Unitario</small><br>
+			<div class="input-group">
+				<input type="number" class="form-control" name="vunitario" id="vunitario" [(ngModel)]="producto.vunitario" #vunitario="ngModel">
+			</div>	
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-md-6 form-group">
+			<small>Porcentaje de Ganancias</small><br>
+			<div class="input-group">
+				<input type="number" class="form-control" name="porcentaje" id="porcentaje"  [(ngModel)]="producto.porcentaje" #porcentaje="ngModel">
+			</div>
+		</div>
+	</div>
+	<button  type="submit" class="btn btn-primary btn-block">
+		<i class="fa fa-plus"></i>
+		Crear Producto
+	</button>
+</form>

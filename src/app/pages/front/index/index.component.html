@@ -1,0 +1,83 @@
+<app-front-navbar></app-front-navbar>
+
+<div id="inSlider" class="carousel slide" data-ride="carousel" >
+    <div class="carousel-inner" role="listbox" *ngFor="let promo of promociones">
+
+        <div  *ngIf="promo.clase == 'active'" class="carousel-item active">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>{{  promo.titulo }}</h1>
+                    <h2>{{  promo.titulo2 }}</h2>
+                    <p class="col-md-5">{{ promo.descripcion_breve }}.</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" routerLink="/{{ promo.link_mensaje }}">
+                            Mas Detalles
+                        </a>
+                    </p>
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <img src="assets/img/landing/laptop.png" alt="laptop"/>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+        </div>
+
+        <div  *ngIf="promo.clase == '' " class="carousel-item">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>{{  promo.titulo }}</h1>
+                    <h2>{{  promo.titulo2 }}</h2>
+                    <p class="col-md-5">{{ promo.descripcion_breve }}.</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" routerLink="/{{ promo.link_mensaje }}">
+                            Mas Detalles
+                        </a>
+                    </p>
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <img src="assets/img/landing/laptop.png" alt="laptop"/>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+        </div>
+    
+    </div>
+    <a class="carousel-control-prev" href="#inSlider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#inSlider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<section class="container services">
+    <div class="row">
+         <div class="col-md-3" *ngFor="let c of categorias">
+            <div class="ibox border">
+                <div class="ibox-content product-box">
+                    <div class="product-imitation">
+                        <img src="assets/img/nullCategoria.png" class="img-responsive" *ngIf='c.preview == ""  || c.preview == null || c.preview == "null"; else noNull '>
+                        <ng-template #noNull>
+                            <img src="{{ c.preview }}" class="img-responsive">
+                        </ng-template>
+                    </div>
+                    <div class="product-desc">
+                        <h2 class="text-capitalize"> {{ c.nombre }} </h2>
+                        <div class="m-t text-righ">
+                            <a href="#" class="btn btn-xs btn-outline btn-primary btn-block">
+                                Detalles &raquo;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+</section>
+
+<app-front-copyright></app-front-copyright>

@@ -1,0 +1,13 @@
+.logo-name {
+	font-size: 120px !important;
+	margin-top: 20%;
+	color: #222;
+}
+h3 {
+	text-transform: uppercase;
+}
+
+h3, p, small {
+	color: #222;
+}
+

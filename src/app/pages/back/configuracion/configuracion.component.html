@@ -1,0 +1,263 @@
+<div id="wrapper">
+    <app-back-sidebar></app-back-sidebar>
+    
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+	   <app-back-top-navbar></app-back-top-navbar>
+
+	   <!-- Breadcrumb -->
+		<div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>Configuración</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/panel">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Configuración</strong>
+                    </li>
+                </ol>
+        	</div>
+		</div>
+
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+	                <div class="ibox ">
+	                    <div class="ibox-content mailbox-content">
+	                        <div class="file-manager">
+	                            <div class="space-25"></div>
+								<h5>Información</h5>
+	                            <ul class="folder-list m-b-md" style="padding: 0">
+	                                <li (click)="Infonegocio()">
+	                                	<a>
+	                                		<i class="fa fa-circle text-navy"></i>
+	                                		Negocio
+	                                	</a>
+	                                </li>
+	                                <li (click)="Infocontacto()">
+	                                	<a>
+	                                		<i class="fa fa-circle text-success"></i>
+	                                		Contacto
+	                                	</a>
+	                                </li>
+	                                <li (click)="Infoubicacion()">
+	                                	<a>
+	                                		<i class="fa fa-circle text-info"></i>
+	                                		Ubicación
+	                                	</a>
+	                                </li>
+	                                <li (click)="Inforedes()">
+	                                	<a>
+	                                		<i class="fa fa-circle text-default"></i>
+	                                		Redes Sociales
+	                                	</a>
+	                                </li>
+	                            </ul>
+	                            <div class="clearfix"></div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <div class="col-lg-9 animated fadeInRight" *ngFor="let det of configuracion">
+	            	<div class="mail-box-header">
+		                <h2>
+		                   {{ tipoInformacion }}
+		                </h2>
+		            </div>
+
+					<div class="mail-box">
+	                	<table class="table table-hover table-mail">
+			                <!-- =====  Datos del Negocio  ====== -->
+			                <tbody class="col-lg-12" *ngIf="vernegocio">
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-navy"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Logo</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.logo }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Logo">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-navy"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Iso Imagen</b></a></td>
+							        <td class="mail-subject">
+							        	<img src="assets/img/{{ det.isoimagen }}" class="img-responsive" width="30" height="30">	
+							        </td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Isoimage">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+						        	</td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-navy"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Lema</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.lema }}</td>
+							        <td class="">
+							        	<button class="btn btn-xs btn-default" title="Editar Lema">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							</tbody>
+			                
+			                <!-- =====  Datos de Contacto  ====== -->
+							<tbody class="col-lg-12" *ngIf="vercontacto">
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-success"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Teléfono</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.telefono }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Teléfono">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-success"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Celular</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.celular }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Celular">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-success"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Domicilios</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.domicilios }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Domicilios">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-success"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Email</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.email }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Email">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							</tbody>
+
+			                <!-- =====  Datos de Ubicacion  ====== -->
+			                <tbody class="col-lg-12" *ngIf="verubicacion">
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>País</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.pais }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar País">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Ciudad</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.ciudad }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Ciudad">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Barrio</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.barrio }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Barrio">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><a><b>Dirección</b></a></td>
+							        <td class="mail-subject text-capitalize">{{ det.direccion }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Dirección">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							</tbody>
+
+			                <!-- =====  Datos Sobre Redes  ====== -->
+			                <tbody class="col-lg-12" *ngIf="verredes">
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><i class="fa fa-facebook"></i></td>
+							        <td class="mail-subject">{{ det.facebook }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Facebook">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-info"></i>
+							        </td>
+							        <td class="mail-ontact"><i class="fa fa-twitter"></i></td>
+							        <td class="mail-subject">{{ det.twitter }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Twitter">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							    <tr class="read">
+							        <td class="check-mail">
+							            <i class="fa fa-circle text-default"></i>
+							        </td>
+							        <td class="mail-ontact"><a><i class="fa fa-instagram"></i></a></td>
+							        <td class="mail-subject">{{ det.instagram }}</td>
+							        <td>
+							        	<button class="btn btn-xs btn-default" title="Editar Instagram">
+							        		<i class="fa fa-pencil"></i>
+							        	</button>
+							        </td>
+							    </tr>
+							</tbody>
+
+	            		</table>
+        			</div>
+        			
+    			</div>
+			</div>
+		</div>

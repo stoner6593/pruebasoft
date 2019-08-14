@@ -1,0 +1,102 @@
+<div id="wrapper">
+    <app-back-sidebar></app-back-sidebar>
+    
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+	   <app-back-top-navbar></app-back-top-navbar>
+
+	   <!-- Breadcrumb -->
+		<div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>Usuarios</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/panel">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Admin y Usuarios</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-sm-8">
+			        <div class="title-action">
+			            <a  data-toggle="modal" href='#mNuevoUsuario' class="btn btn-info btn-sm">
+			                <i class="fa fa-plus"></i> 
+			            	Agregar Usuario
+			        	</a>&nbsp; 
+			        </div>
+			    </div>
+		</div>
+
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+                <div class="col-lg-12">
+                	<div class="ibox-content">
+                        <div class="table-responsive">
+ 		                   <table class="footable table table-stripped table-hover toggle-arrow-tiny" id="dataTables-example" >
+        			            <thead>
+                    				<tr>
+                        				<th data-toggle="true">Nombre</th>
+                        				<th data-toggle="true">Usuario</th>
+                        				<th data-toggle="true">Foto</th>
+                        				<th data-toggle="true">Estado</th>
+                        				<th data-toggle="true" class="text-right">Opciones</th>
+                        			</tr>
+                        		</thead>
+                        		<tbody>
+                        			<tr *ngFor="let u of usuarios">
+										<td>{{ u.nombre }} {{ u.apellido }} </td>
+										<td>{{ u.usuario }} </td>
+										<td>
+											<img src="{{ u.foto }}" class="rounded" *ngIf='u.foto != "" '>
+											<img src="assets/img/nullUsuario.png" class="rounded" *ngIf='u.foto == "" '>
+										</td>
+										<td>
+											<button class="btn btn-primary btn-xs" *ngIf="u.estado == 1" (click)="actializarUsuario( u.id, u.estado )">
+												Activado
+											</button>
+											<button class="btn btn-danger btn-xs" *ngIf="u.estado == 0" (click)="actializarUsuario( u.id, u.estado )">
+												Desactivado
+											</button>
+										</td>
+										<td class="text-right">
+											<div class="btn-group">
+	                                            <button class="btn-white btn btn-xs" title="Ver {{ u.nombre }} {{ u.apellido }}">
+	                                            	<i class="fa fa-eye"></i>
+	                                            </button>&nbsp; &nbsp; 
+	                                            <button class="btn-white btn btn-xs" title="Editar {{ u.nombre }} {{ u.apellido }}">
+	                                            	<i class="fa fa-pencil"></i>	
+	                                            </button>
+	                                        </div>
+										</td>
+									</tr>
+                        		</tbody>
+                        		<tfoot>
+	                                <tr>
+	                                    <td colspan="4">
+	                                        <ul class="pagination float-right"></ul>
+	                                    </td>
+	                                </tr>
+                                </tfoot>
+                        	</table>
+                        </div>
+
+                        <div class="modal" tabindex="-1" role="dialog" id="mNuevoUsuario">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Agregar Usuario</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				     						<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<!-- <app-createuser></app-createuser> -->
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>

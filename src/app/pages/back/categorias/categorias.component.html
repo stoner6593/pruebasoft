@@ -1,0 +1,95 @@
+<div id="wrapper">
+    <app-back-sidebar></app-back-sidebar>
+    
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+	   <app-back-top-navbar></app-back-top-navbar>
+
+	   <!-- Breadcrumbs -->
+	   <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>Categorías</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+						<a routerLink="/panel">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Categorias</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-sm-8">
+			        <div class="title-action">
+			            <a data-toggle="modal" href='#mNuevaCategoria' class="btn btn-info btn-sm">
+			                <i class="fa fa-plus"></i> 
+			            	Agregar Categoria
+			        	</a>&nbsp; 
+			        </div>
+		    </div>
+        </div>
+
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+                <div class="col-lg-12">
+                	<div class="ibox-content">
+                        <div class="table-responsive">
+ 		                   <table class="footable table table-stripped table-hover toggle-arrow-tiny" id="dataTables-example" >
+        			            <thead>
+                    				<tr>
+                        				<th data-toggle="true">Categoria</th>
+                        				<th data-toggle="true">Imagen</th>
+                        				<th data-toggle="true">Estado</th>
+                        				<th data-toggle="true">Creado en</th>
+                        				<th data-toggle="true" class="text-right">Opciones</th>
+                        			</tr>
+                        		</thead>
+                        		<tbody>
+                        			<tr *ngFor="let c of categorias">
+										<td>{{ c.nombre }}</td>
+										<td>
+											<img src="assets/img/nullCategoria.png" class="rounded" *ngIf='c.preview == ""  || c.preview == null || c.preview == "null"; else noNull '>
+											<ng-template #noNull>
+												<img src="{{ c.preview }}" class="rounded">
+											</ng-template>
+										</td>
+										<td>
+											<button class="btn btn-primary btn-xs" *ngIf="c.estado == 1" (click)="actializarEstadoCategoria( c.id, c.estado )">
+												Activada
+											</button>
+											<button class="btn btn-danger btn-xs" *ngIf="c.estado == 0" (click)="actializarEstadoCategoria( c.id, c.estado )">
+												Desactivada
+											</button>
+										</td>
+										<td>{{ c.fcreacion | date:'d / M / yyyy' }}	</td>
+										<td class="text-right">
+											<div class="btn-group">
+	                                            <button class="btn-white btn btn-xs" title="Ver {{ c.nombre }}">
+	                                            	<i class="fa fa-eye"></i>
+	                                            </button>&nbsp; &nbsp; 
+	                                            <button class="btn-white btn btn-xs" title="Editar {{ c.nombre }}"  data-toggle="modal" href='#mEditarCategoria'>
+	                                            	<i class="fa fa-pencil"></i>	
+	                                            </button>&nbsp; &nbsp;
+	                                            <button class="btn-white btn btn-xs" title="Eliminar {{ c.nombre }}" id="borrar" (click)="eliminarCategoria(c.id); ">
+	                                            	<i class="fa fa-trash"></i>	
+	                                            </button>
+	                                        </div>
+										</td>
+									</tr>
+                        		</tbody>
+                        		<tfoot>
+	                                <tr>
+	                                    <td colspan="4">
+	                                        <ul class="pagination float-right"></ul>
+	                                    </td>
+	                                </tr>
+                                </tfoot>
+                        	</table>
+                        </div>
+
+						<app-createcategory></app-createcategory>
+						<!-- <app-editcategory></app-editcategory> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>

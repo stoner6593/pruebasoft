@@ -1,0 +1,63 @@
+<section id="contact" class="gray-section contact" *ngFor="let con of configuracion">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Contacténos</h1>
+            </div>
+        </div>
+        <div class="row m-b-lg justify-content-center">
+            <div class="col-lg-3 " >
+                <address>
+                    <strong>
+                        <span class="navy text-capitalize">{{ con.logo }}</span>
+                    </strong><br/>
+                    <span>
+                        {{ con.direccion }}<br/>
+                        {{ con.ciudad }}, {{ con.pais }}
+                    </span>
+                    <br/>
+                    <abbr title="Phone">Teléfono:</abbr> {{ con.telefono }}
+                </address>
+            </div>
+            <div class="col-lg-4">
+                <p class="text-color"> {{ con.lema }} </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="mailto:{{ con.email }}" class="btn btn-primary">
+                    Envíanos un mensaje
+                </a>
+                <p class="m-t-sm">
+                   <strong>También puedes seguirnos a traves de nuestras las redes sociales</strong>
+                </p>
+                <ul class="list-inline social-icon">
+                    <li>
+                        <a href="{{ con.facebook }}" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    </li>&nbsp;
+                    <li>
+                        <a href="{{ con.twitter }}" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    </li>&nbsp;
+                    <li>
+                        <a href="{{ con.instagram }}" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center m-t-lg m-b-lg">
+                <p>
+                	<strong>&copy; {{ year | date: 'yyyy' }}, 
+                    Desarrollado por Daniel Arcos y Andres Manchego.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

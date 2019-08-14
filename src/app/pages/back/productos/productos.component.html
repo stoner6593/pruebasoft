@@ -1,0 +1,115 @@
+<div id="wrapper">
+    <app-back-sidebar></app-back-sidebar>
+    
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+	   <app-back-top-navbar></app-back-top-navbar>
+
+	   <!-- Breadcrumb -->
+		<div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>Productos</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/panel">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Productos</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-sm-8">
+		        <div class="title-action">
+		            <a  data-toggle="modal" href='#mNuevoProducto' class="btn btn-info btn-sm dim">
+		                <i class="fa fa-plus"></i> 
+		            	Agregar Producto
+		        	</a>&nbsp; 
+		        </div>
+		    </div>
+		</div>
+
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+                <div class="col-lg-12">
+                	<div class="ibox-content">
+                        <div class="table-responsive">
+ 		                   <table class="footable table table-stripped table-hover toggle-arrow-tiny" id="dataTables-example" >
+        			            <thead>
+                    				<tr>
+                        				<th data-toggle="true">Nombre</th>
+                        				<th data-toggle="true">Categoria</th>
+                        				<th data-toggle="true">Presentación</th>
+                        				<th data-toggle="true">Stock</th>
+                        				<th data-toggle="true">Vencimiento</th>
+                        				<th data-toggle="true">Foto</th>
+                        				<th data-toggle="true" class="text-right">Opciones</th>
+                        			</tr>
+                        		</thead>
+                        		<tbody>
+                        			<tr *ngFor="let p of productos">
+										<td>{{ p.nombre }} </td>
+										<td>{{ p.categoria }} </td>
+										<td>{{ p.presentacion }} </td>
+										<td>
+											<button class="btn btn-success btn-xs" *ngIf="p.stock >= 20" title="Tienes un stock bueno">
+												{{ p.stock }}
+											</button>
+											<button class="btn btn-primary btn-xs" *ngIf="p.stock >3 && p.stock <= 19" title="Tienes pocas existencias">
+												{{ p.stock }}
+											</button>
+											<button class="btn btn-warning btn-xs" *ngIf="p.stock <=3 && p.stock >= 1" title="Tienes muy pocas existencias">
+												{{ p.stock }}
+											</button>
+											<button class="btn btn-danger btn-xs" *ngIf="p.stock == 0 && p.stock < 1" title="No tienes existencias">
+												{{ p.stock }}
+											</button>
+										</td>
+										<td>{{ p.fvencimiento | date:'d / MM / yyyy' }} </td>
+										<td>
+											<img src="{{ p.foto }}" class="rounded" *ngIf='p.foto != "" '>
+											<img src="assets/img/nullProducto.png" class="rounded" *ngIf='p.foto == "" '>
+										</td>
+										<td class="text-right">
+											<div class="btn-group">
+	                                            <button class="btn-white btn btn-xs" title="Ver {{ p.nombre }}">
+	                                            	<i class="fa fa-eye"></i>
+	                                            </button>&nbsp; &nbsp; 
+	                                            <button class="btn-white btn btn-xs" title="Editar {{ p.nombre }}">
+	                                            	<i class="fa fa-pencil"></i>	
+	                                            </button>&nbsp; &nbsp;
+	                                            <button class="btn-white btn btn-xs" id="borrar" title="Eliminar {{ p.nombre }}" (click)="eliminarProducto(p.id); ">
+	                                            	<i class="fa fa-trash"></i>	
+	                                            </button>
+	                                        </div>
+										</td>
+									</tr>
+                        		</tbody>
+                        		<tfoot>
+	                                <tr>
+	                                    <td colspan="4">
+	                                        <ul class="pagination float-right"></ul>
+	                                    </td>
+	                                </tr>
+                                </tfoot>
+                        	</table>
+                        </div>
+
+                        <div class="modal" tabindex="-1" role="dialog" id="mNuevoProducto">
+							<div class="modal-dialog  modal-xl" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Agregar Producto</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				     						<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<app-createproduct></app-createproduct>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>

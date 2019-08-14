@@ -1,0 +1,72 @@
+<div class="modal" tabindex="-1" role="dialog" id="mNuevaPromocion">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Agregar Promocion</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form (ngSubmit)="onCrearPromocion(formNew)" #formNew="ngForm"  >
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<small>Titulo</small><br>
+							<div class="input-group">
+								<input type="text" class="form-control" name="titulo" id="titulo" [(ngModel)]="promocion.titulo" #titulo="ngModel">
+							</div>
+						</div>	
+						<div class="col-md-6 form-group">
+							<small>Titulo Alternativo</small><br>		
+							<div class="input-group">
+								<input type="text" class="form-control" name="titulo2" id="titulo2" [(ngModel)]="promocion.titulo2" #titulo2="ngModel">
+							</div>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<small>Vencimiento</small><br>
+							<div class="input-group">
+								<input type="date" class="form-control" name="fvencimiento" id="fvencimiento" [(ngModel)]="promocion.fvencimiento" #fvencimiento="ngModel">
+							</div>		
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<small>Descripción Breve</small><br>
+							<div class="input-group">
+								<textarea class="form-control" name="descripcion_breve" id="descripcion_breve" [(ngModel)]="promocion.descripcion_breve" #descripcionB="ngModel"></textarea>
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<small>Descripción Completa</small><br>
+							<div class="input-group">
+								<textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="promocion.descripcion" #descripcion="ngModel"></textarea>
+							</div>
+						</div>		
+					</div>
+					<div class="row">
+						<div class="form-group container">
+							<small>Imagen de Fondo</small><br>
+							<div class="input-group">
+								<input type="file" class="form-control" name="imagebackground" id="imagebackground"  [(ngModel)]="promocion.imagebackground" #imagebackground="ngModel">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group container">
+							<small>Icono Promoción</small><br>
+							<div class="input-group">
+								<input type="file" class="form-control" name="icono" id="icono" [(ngModel)]="promocion.icono" #imagebackground="ngModel">
+							</div>	
+						</div>	
+					</div>
+					<button  type="submit" class="btn btn-primary btn-block">
+						<i class="fa fa-plus"></i>
+						Crear Promoción
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

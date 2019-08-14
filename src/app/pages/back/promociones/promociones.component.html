@@ -1,0 +1,98 @@
+<div id="wrapper">
+    <app-back-sidebar></app-back-sidebar>
+    
+    <!-- Page Wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+	   <app-back-top-navbar></app-back-top-navbar>
+
+	   <!-- Breadcrumbs -->
+	   <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-4">
+                <h2>Promociones</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/panel">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Promociones de Productos</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-sm-8">
+			        <div class="title-action">
+			            <a  data-toggle="modal" href='#mNuevaPromocion' class="btn btn-info btn-sm">
+			                <i class="fa fa-plus"></i> 
+			            	Agregar Promoción
+			        	</a>&nbsp; 
+			        </div>
+		    </div>
+        </div>
+
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+                <div class="col-lg-12">
+                	<div class="ibox-content">
+                        <div class="table-responsive">
+ 		                   <table class="footable table table-stripped table-hover toggle-arrow-tiny" id="dataTables-example" >
+        			            <thead>
+                    				<tr>
+                        				<th data-toggle="true">Titulo</th>
+                        				<th data-toggle="true">Titulo Alternativo</th>
+                        				<th data-toggle="true">Fondo</th>
+                        				<th data-toggle="true">Estado</th>
+                        				<th data-toggle="true">Clase</th>
+                        				<th data-toggle="true" class="text-right">Opciones</th>
+                        			</tr>
+                        		</thead>
+                        		<tbody>
+                        			<tr *ngFor="let pr of promociones">
+										<td>{{ pr.titulo }}</td>
+										<td>{{ pr.titulo2 }}</td>
+										<td>
+											<img src="{{ pr.imagebackground }}" class="rounded" *ngIf='pr.imagebackground != "" '>
+											<img src="assets/img/nullPromocion.png" class="rounded" *ngIf='pr.imagebackground == "" '>
+										</td>
+										<td>
+											<button class="btn btn-primary btn-xs" *ngIf="pr.estado == 1" (click)="actializarEstadoPromocion( pr.id, pr.estado )" title="Desactivar {{ pr.titulo }}">
+												Activada
+											</button>
+											<button class="btn btn-danger btn-xs" *ngIf="pr.estado == 0" (click)="actializarEstadoPromocion( pr.id, pr.estado )" title="Activar {{ pr.titulo }}">
+												Desactivada
+											</button>
+										</td>
+										<td>
+											<button class="btn btn-primary btn-xs" *ngIf="pr.clase == 'active' " (click)="actializarClasePromocion( pr.id, pr.clase )" title="Desactivar Clase">
+												Item Active
+											</button>
+											<button class="btn btn-danger btn-xs" *ngIf="pr.clase == '' " (click)="actializarClasePromocion( pr.id, pr.clase )" title="Active Clase">
+												Item no Active
+											</button>
+										</td>
+										<td class="text-right">
+											<div class="btn-group">
+	                                            <button class="btn-white btn btn-xs" title="Ver {{ pr.titulo }}">
+	                                            	<i class="fa fa-eye"></i>
+	                                            </button>&nbsp; &nbsp; 
+	                                            <button class="btn-white btn btn-xs" title="Editar {{ pr.titulo }}">
+	                                            	<i class="fa fa-pencil"></i>	
+	                                            </button>
+	                                        </div>
+										</td>
+									</tr>
+                        		</tbody>
+                        		<tfoot>
+	                                <tr>
+	                                    <td colspan="4">
+	                                        <ul class="pagination float-right"></ul>
+	                                    </td>
+	                                </tr>
+                                </tfoot>
+                        	</table>
+                        </div>
+
+						<app-createpromocion></app-createpromocion>
+
+	                </div>
+	            </div>
+	        </div>
+	    </div>

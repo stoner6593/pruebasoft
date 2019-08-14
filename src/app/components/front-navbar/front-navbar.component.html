@@ -1,0 +1,30 @@
+<div class="navbar-wrapper" *ngFor="let con of configuracion">
+    <nav class="navbar navbar-light  navbar-fixed-top navbar-expand-md" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" routerLink="/inicio">
+                <img src="assets/img/{{ con.isoimagen }}" class="img-responsive" width="30" height="30">
+                {{ con.logo }}
+            </a>
+            <div class="navbar-header page-scroll">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li  routerLinkActive="active">
+                        <a class="page-scroll" routerLink="/" routerLinkActive="active" href="#">Inicio</a>
+                    </li>
+                    <li><a class="page-scroll" routerLink="/" href="#">Promociones</a></li>
+                    <li><a class="page-scroll" routerLink="/login">Iniciar Sesión</a></li>
+                    <li>
+                        <a class="page-scroll">
+                            <i class="fa fa-shopping-basket"></i>
+                            Carrito de Compra
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
